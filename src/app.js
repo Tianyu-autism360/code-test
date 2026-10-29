@@ -10,7 +10,7 @@ app.get('/health', (req, res) => {
 });
 
 // TODO: register your routers here. See src/routes/example.js for a sample:
-// app.use('/examples', require('./routes/example'));
+app.use('/events', require('./routes/events'));
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
