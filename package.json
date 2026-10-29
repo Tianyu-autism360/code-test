@@ -6,7 +6,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "test": "jest --runInBand"
   },
   "engines": {
     "node": ">=18"
@@ -17,6 +18,8 @@
     "mongoose": "^8.9.5"
   },
   "devDependencies": {
+    "axios": "^1.21.0",
+    "jest": "^30.5.2",
     "nodemon": "^3.1.9"
   }
 }

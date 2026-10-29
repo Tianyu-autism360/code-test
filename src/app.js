@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const { eventRouter } = require('./routes/event');
+const { bookingRouter } = require('./routes/booking');
+
 const app = express();
 app.use(express.json());
 
@@ -8,6 +11,9 @@ app.get('/health', (req, res) => {
   const dbConnected = mongoose.connection.readyState === 1;
   res.status(dbConnected ? 200 : 503).json({ status: dbConnected ? 'ok' : 'db-disconnected' });
 });
+
+app.use('/events', eventRouter);
+app.use('/bookings', bookingRouter);
 
 // TODO: register your routers here. See src/routes/example.js for a sample:
 // app.use('/examples', require('./routes/example'));
@@ -26,4 +32,5 @@ app.use((err, req, res, next) => {
   res.status(status).json({ error: status >= 500 ? 'Internal server error' : err.message });
 });
 
-module.exports = app;
+
+module.exports = app
